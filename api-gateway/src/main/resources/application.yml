@@ -1,0 +1,34 @@
+server:
+  port: 8083
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+    reactor.netty.http.client: DEBUG
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: book-service
+          uri: http://localhost:8081
+          predicates:
+            - Path=/book-service/api/books/**
+          filters:
+            - StripPrefix=1
+            - name: Logging
+              args:
+                baseMessage: My Custom Message
+                preLogger: true
+                postLogger: true
+#                - JwtAuthenticationFilter      # only if using custom filter (2-B)
+#                - name: CircuitBreaker         # Resilience4j under the hood
+#                  args:
+#                    name: service1CB
+#                    fallbackUri: forward:/fallback/service1
+#                - name: RequestRateLimiter     # extra per-route overrides
+#                  args:
+#                    redis-rate-limiter.replenishRate: 5
+#                    redis-rate-limiter.burstCapacity: 10
