@@ -1,4 +1,4 @@
-Commands to run docker
+## Commands to run docker
 
 - need to mvn clean and install to create the jar file first
 - docker build -t [image-name]:[tag] .
@@ -10,7 +10,7 @@ Commands to run docker
     - -p → declare port
     - --name → declare name for the container
 
-Other commands:
+## Other commands:
 docker --help
 -> get list of commands
 docker ps -a
@@ -28,3 +28,6 @@ docker images
 docker push [username]/[image-name]:[tag]
 
 **image-name harus sama dengan nama di docker hub**
+
+### Using docker-compose.yaml
+docker-compose build
