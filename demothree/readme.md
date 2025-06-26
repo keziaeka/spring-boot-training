@@ -59,6 +59,9 @@ pasti ada "akms" (cek k8/service.yaml)
       - Example: kubectl describe pods/myapp-dev-demo-7694cc6f49-22cmc
     -     kubectl delete -n default pod [pod-name]
     -     kubectl delete -n default deployment [deployment-name]
+    -     kubectl logs [pod-name]
+      - Example:
+      -      kubectl logs myapp-prod-config-secret-8f8fb75f8-vg9x8
 - Run the service with command:
   - minikube service [service-name]
     - Example: 
@@ -83,3 +86,15 @@ pasti ada "akms" (cek k8/service.yaml)
 - if we use docker-desktop, it will show docker-desktop
 - To change the context, run command:
   -     kubectl config use-context docker-desktop
+
+## ConfigMap and Secret
+- Apply yaml config
+  - Run command:
+    -     cd .\configmap-secret\
+    -     kubectl apply -f config-map.yaml
+    -     kubectl apply -f deployment-configmap-secret.yaml
+    -     kubectl apply -f secret.yaml
+    -     kubectl apply -f service-config.yaml
+
+## HPA yaml
+- https://medium.com/@ravipatel.it/introduction-to-horizontal-pod-autoscaler-hpa-in-kubernetes-with-example-775babb88b6f
