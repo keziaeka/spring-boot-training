@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: myapp-dev-demo #Hasilnya akan dengan nama ini, tidak terikat dengan nama app dibawah
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: myapp-dev #identifier untuk podsnya akan dengan nama apa, dan harus sama dengan template

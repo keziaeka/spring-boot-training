@@ -38,30 +38,31 @@ pasti ada "akms" (cek k8/service.yaml)
 - Makesure your terminal is in the yaml file's directory
 - Build image (from local pc) with docker as usual
   - Example with docker compose, run command:
-    - docker compose -f docker-compose.[env].yaml build
+    -     docker compose -f docker-compose.[env].yaml build
 - Push to docker hub (from local pc)
   - Run command: 
-    - docker push keziaeka/demo-three:[env]-1.0.0
+    -     docker push keziaeka/demo-three:[env]-1.0.0
 - Pull from docker hub to where the minikube/kube runs (if it runs in local pc then we don't have to pull because we have it locally from the build image before)
   - Run command:
-    - docker pull keziaeka/demo-three:[env]-1.0.0
+    -     docker pull keziaeka/demo-three:[env]-1.0.0
 - Apply yaml config
   - Run command:
-    - cd .\k8\
-    - kubectl apply -f deployment-[env].yaml
-    - kubectl apply -f service-[env].yaml
+    -     cd .\k8\
+    -     kubectl apply -f deployment-[env].yaml
+    -     kubectl apply -f service-[env].yaml
   - Other command:
-    - kubectl get deployment
-    - kubectl get nodes
-    - kubectl get pods
-    - kubectl get service
-    - kubectl describe pods/[pod-name]
+    -     kubectl get deployment
+    -     kubectl get nodes
+    -     kubectl get pods
+    -     kubectl get service
+    -     kubectl describe pods/[pod-name]
       - Example: kubectl describe pods/myapp-dev-demo-7694cc6f49-22cmc
-    - kubectl delete -n default pod [pod-name]
-    - kubectl delete -n default deployment [deployment-name]
+    -     kubectl delete -n default pod [pod-name]
+    -     kubectl delete -n default deployment [deployment-name]
 - Run the service with command:
   - minikube service [service-name]
-    - Example: minikube service myapp-dev-demo
+    - Example: 
+      -     minikube service myapp-dev-demo
 - To get what IP we could hit, we can get the "INTERNAL-IP" from running this command:
   - kubectl get nodes -o wide
   ![img_1.png](img/img_1.png)
@@ -70,8 +71,15 @@ pasti ada "akms" (cek k8/service.yaml)
 - Normal case: http://192.168.49.2:30080/api/profiles/
 - For minikube, we can't use the ip and port above. minikube does a tunneling for the service. We can run this command:
   - minikube service [service-name]
-    - Example: minikube service myapp-dev-demo
-    ![img_3.png](img/img_3.png)
+    - Example: 
+      -     minikube service myapp-dev-demo
+      ![img_3.png](img/img_3.png)
     - Result: http://127.0.0.1:5393/api/profiles/
      ![img_4.png](img/img_4.png)
-  
+
+- To check where we run the kubernetes:
+  -     kubectl config current-context
+  ![img.png](img/img5.png)
+- if we use docker-desktop, it will show docker-desktop
+- To change the context, run command:
+  -     kubectl config use-context docker-desktop
