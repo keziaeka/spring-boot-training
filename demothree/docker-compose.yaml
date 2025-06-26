@@ -1,9 +1,10 @@
 version: '3.8'
+
 services:
   bca-app:
     build:
-        context: .
-        dockerfile: Dockerfile
+      context: .
+      dockerfile: Dockerfile
     image: keziaeka/demo-three:1.0.0
     container_name: bca-app
     ports:

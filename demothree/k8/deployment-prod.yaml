@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp-prod-demo #Hasilnya akan dengan nama ini, tidak terikat dengan nama app dibawah
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: myapp-prod #identifier untuk podsnya akan dengan nama apa, dan harus sama dengan template
+  template:
+    metadata:
+      labels:
+        app: myapp-prod #identifier template harus sama dengan app di selectornya
+    spec:
+      containers:
+        - name: myapp
+          image: keziaeka/demo-three:prod-1.0.0
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: "prod"
+
