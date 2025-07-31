@@ -12,6 +12,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class CustomerService {
@@ -68,6 +70,19 @@ public class CustomerService {
 
         System.out.println("Card Number: " + account.getCardNumber());
         System.out.println("Customer Name: " + account.getCustomer().getCustomerName());
+    }
+
+    public List<Customer> getCustomersKasusNPlus1() {
+        List<Customer> customers = customerRepository.findAll();
+        for (Customer c : customers) {
+            c.getBankAccountList().size();
+        }
+        return customers;
+    }
+
+    public List<Customer> getCustomersPenangananNPlus1() {
+        List<Customer> customers = customerRepository.findAllWithAccounts();
+        return customers;
     }
 
 }

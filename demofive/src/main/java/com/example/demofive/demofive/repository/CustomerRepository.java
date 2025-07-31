@@ -8,6 +8,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Integer> {
 
@@ -35,4 +37,8 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer> {
     //Data diambil sekaligus saat query utama dieksekusi
     //Default pada @OneToMany dan @ManyToMany adalah Eager loading
     //Saat ambil customer, ambil juga bank accountnya
+
+    @Query("SELECT c FROM Customer c LEFT JOIN FETCH c.bankAccountList")
+    List<Customer> findAllWithAccounts();
+
 }

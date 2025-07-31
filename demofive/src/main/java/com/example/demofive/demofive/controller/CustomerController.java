@@ -72,4 +72,14 @@ public class CustomerController {
         customerService.testEager();
         return "Eager loading test completed. Check console for output.";
     }
+
+    @GetMapping("/kasus-n-plus-one")
+    public List<Customer> getCustomerNPlusOne() {
+        return customerService.getCustomersKasusNPlus1();
+    }
+
+    @GetMapping("/penanganan-n-plus-one")
+    public List<Customer> getCustomersPenangananNPlusOne() {
+        return customerService.getCustomersPenangananNPlus1();
+    }
 }
